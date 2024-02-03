@@ -56,6 +56,8 @@ int main(int argc, char **argv) {
 	if (header.tag_sz != 0) {
 		fprintf(stderr, "Warning: this disk image has tags but they will "
 			"be ignored.\n");
+		fprintf(stderr, "You can probably ignore this warning unless it's "
+			"a Lisa image.\n");
 	}
 
 	uint32_t data_sz = ntohl(header.data_sz);
@@ -101,6 +103,8 @@ int main(int argc, char **argv) {
 	if (checksum != expected_checksum) {
 		fprintf(stderr, "Checksum mismatch: expected=%u actual=%u\n",
 			expected_checksum, checksum);
+		fprintf(stderr, "This could be a problem with the image or a bug in "
+			"undiskcopy\n");
 		return EXIT_FAILURE;
 	}
 
